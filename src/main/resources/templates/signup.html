@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html :: head"></head>
+<body>
+<div>
+  <div>
+    <header th:insert="fragments/nav.html::navbar"></header>
+  </div>
+  <div class="container mx-auto">
+    <div class="row d-flex justify-content-center">
+      <div class="col-sm-6">
+        <h1 class="text-center m-4">Sign up</h1>
+        <div class="card">
+          <div class="card-body">
+            <form action="" method="post" th:action="@{/signup-process}" th:object="${newStudent}">
+              <div class="form-group">
+                <label for="id">Id</label>
+                <input class="form-control" type="text" th:field="*{id}"/>
+              </div>
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input class="form-control" type="text" th:field="*{username}"/>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" type="password" th:field="*{password}"/>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" type="email" th:field="*{email}"/>
+              </div>
+              <div class="form-group">
+                <label for="firstName">First name</label>
+                <input class="form-control" type="text" th:field="*{firstName}"/>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last name</label>
+                <input class="form-control" type="text" th:field="*{lastName}"/>
+              </div>
+              <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit">
+                  Sign Up
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div th:replace="fragments/scripts.html :: scripts"></div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="fragments/head.html :: head">
+  </head>
+  <body>
+    <div>
+      <div>
+        <header th:insert="fragments/nav.html :: navbar"></header>
+      </div>
+      <div class="container mx-auto mt-">
+        <main class="row">
+          <div class="col-lg-4 p-4">
+            <form
+              action="#"
+              th:action="@{/student/add}"
+              th:object="${student}"
+              method="POST"
+            >
+              <div class="text-center text-secondary">
+                <h3>Nuevo Estudiante</h3>
+              </div>
+              <div class="form-group">
+                <label th:for="id">Id </label>
+                <input
+                  type="text"
+                  th:field="*{id}"
+                  class="form-control"
+                  placeholder="Id"
+                />
+              </div>
+              <div class="form-group">
+                <label th:for="firstName">First name </label>
+                <input
+                  type="text"
+                  th:field="*{firstName}"
+                  class="form-control"
+                  placeholder="First name"
+                />
+              </div>
+              <div class="form-group">
+                <label th:for="lastName">Last name </label>
+                <input
+                  type="text"
+                  th:field="*{lastName}"
+                  class="form-control"
+                  placeholder="Last name"
+                />
+              </div>
+              <div class="form-group">
+                <label th:for="email">Email </label>
+                <input
+                  type="text"
+                  th:field="*{email}"
+                  class="form-control"
+                  placeholder="Email"
+                />
+              </div>
+              <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit">
+                  Agregar
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="col-lg-8 mt-4" style="overflow-x: auto;">
+            <section class="table-responsive">
+              <table class="table table-hover">
+                <thead class="thead-dark">
+                  <tr>
+                    <th class="col">#Id</th>
+                    <th class="col">Nombres</th>
+                    <th class="col">Apellidos</th>
+                    <th class="col">Emails</th>
+                    <th class="col">Actualizar</th>
+                    <th class="col">Eliminar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="student: ${students}">
+                    <td scope="row" th:text="${student.id}"></td>
+                    <td th:text="${student.firstName}"></td>
+                    <td th:text="${student.lastName}"></td>
+                    <td th:text="${student.email}"></td>
+                    <td>
+                      <a
+                        class="btn btn-success"
+                        th:href="@{update/} + ${student.id}"
+                        >Actualizar</a
+                      >
+                    </td>
+                    <td>
+                      <a
+                        class="btn btn-danger"
+                        th:href="@{delete/} + ${student.id}"
+                        >Eliminar</a
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
+    <div th:replace="fragments/scripts.html :: scripts"></div>
+  </body>
+</html>

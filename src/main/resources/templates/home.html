@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html :: head"></head>
+<body>
+  <div>
+    <div>
+      <header th:insert="fragments/nav.html :: navbar"></header>
+    </div>
+    <div>
+      <div class="container mx-auto">
+        <section class="card m-4">
+          <div class="card-body">
+            <h3>List of Students</h3>
+            <div>
+              <a
+                class="text-decoration-none"
+                href="#"
+                th:href="@{/student/students}"
+              >Students</a
+              >
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+  <div th:replace="fragments/scripts.html :: scripts"></div>
+</body>
+</html>
