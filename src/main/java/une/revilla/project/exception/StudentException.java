@@ -12,6 +12,7 @@ public class StudentException {
     @ExceptionHandler(NoSuchElementException.class)
     public String error(Exception e, Model model) {
         model.addAttribute("error", e.getMessage());
+        model.addAttribute("valid", false);
         return "error";
     }
 }

@@ -1,67 +1,77 @@
 <!DOCTYPE html>
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-  <head th:replace="fragments/head.html :: head"></head>
-  <body>
+<head th:replace="fragments/head.html :: head"></head>
+<body>
+<div>
     <div>
-      <div>
-        <header th:insert="fragments/nav.html :: navbar"></header>
-      </div>
-      <div class="container mx-auto">
-        <section class="row justify-content-md-center">
-          <div class="col-lg-4 p-4">
-            <form
-              action="#"
-              th:action="@{/student/update/process}"
-              th:object="${myStudent}"
-              method="POST"
-            >
-              <div class="text-center text-secondary">
-                <h3>Actualizar Estudiante</h3>
-              </div>
-              <div class="form-group">
-                <input
-                  type="hidden"
-                  th:field="*{id}"
-                  th:value="${id}"
-                  class="form-control"
-                />
-              </div>
-              <div class="form-group">
-                <label th:for="firstName">First name </label>
-                <input
-                  type="text"
-                  th:field="*{firstName}"
-                  th:value="${firstName}"
-                  class="form-control"
-                />
-              </div>
-              <div class="form-group">
-                <label th:for="lastName">Last name </label>
-                <input
-                  type="text"
-                  th:field="*{lastName}"
-                  th:value="${lastName}"
-                  class="form-control"
-                />
-              </div>
-              <div class="form-group">
-                <label th:for="email">Email </label>
-                <input
-                  type="text"
-                  th:field="*{email}"
-                  th:value="${email}"
-                  class="form-control"
-                />
-              </div>
-              <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit">
-                  Guardar
-                </button>
-              </div>
-            </form>
-          </div>
-        </section>
-      </div>
+      <header th:insert="fragments/nav.html :: navbar"></header>
     </div>
-  </body>
+    <div class="container mx-auto">
+      <section class="row justify-content-md-center">
+        <div class="col-lg-4 p-4">
+          <form
+            action="#"
+            th:action="@{/student/update/process}"
+            th:object="${myStudent}"
+            method="POST"
+          >
+            <div class="text-center text-secondary">
+              <h3>Actualizar Estudiante</h3>
+            </div>
+            <div class="form-group">
+              <label th:for="username">Username </label>
+              <input
+                type="text"
+                th:field="*{username}"
+                th:value="${username}"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label th:for="password">Password </label>
+              <input
+                type="text"
+                th:field="*{password}"
+                th:value="${password}"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label th:for="email">Email </label>
+              <input
+                type="text"
+                th:field="*{email}"
+                th:value="${email}"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label th:for="firstName">First name </label>
+              <input
+                type="text"
+                th:field="*{firstName}"
+                th:value="${firstName}"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label th:for="lastName">Last name </label>
+              <input
+                type="text"
+                th:field="*{lastName}"
+                th:value="${lastName}"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary btn-block" type="submit">
+                Guardar
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
 </html>

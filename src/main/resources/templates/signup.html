@@ -14,10 +14,6 @@
           <div class="card-body">
             <form action="" method="post" th:action="@{/signup-process}" th:object="${newStudent}">
               <div class="form-group">
-                <label for="id">Id</label>
-                <input class="form-control" type="text" th:field="*{id}"/>
-              </div>
-              <div class="form-group">
                 <label for="username">Username</label>
                 <input class="form-control" type="text" th:field="*{username}"/>
               </div>

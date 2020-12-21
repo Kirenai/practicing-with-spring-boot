@@ -57,11 +57,7 @@ public class IndexController {
 
     @PostMapping(value = "/signup-process")
     public String signupProcess(@ModelAttribute Student newStudent) {
-        try {
-            studentService.saveStudent(newStudent);
-        } catch (Exception e) {
-            return "redirect:/signup";
-        }
+        studentService.saveStudent(newStudent);
         return "redirect:/login";
     }
 }

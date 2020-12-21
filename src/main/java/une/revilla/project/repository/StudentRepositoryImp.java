@@ -7,10 +7,10 @@ import org.springframework.stereotype.Repository;
 import une.revilla.project.entity.Student;
 
 @Repository
-@Qualifier(value = "studentRepository")
-public class StudentRepositoryImp implements StudentRepository {
+@Qualifier("studentRepository")
+public interface StudentRepositoryImp extends StudentRepository {
 
-    List<Student> students = new ArrayList<>(Arrays.asList(
+    /*List<Student> students = new ArrayList<>(Arrays.asList(
             new Student(1L, "Lucas", "Gomez", "lucas_2@mail.com", "lucas361", "12345"),
             new Student(2L, "Maria", "Rojas", "maria@mail.com", "maria361", "12345"),
             new Student(3L, "Luis", "Maldonado", "luis_361@mail.com", "luis361", "12345")
@@ -58,7 +58,7 @@ public class StudentRepositoryImp implements StudentRepository {
                 .findFirst()
                 .map(value -> students.remove(value))
                 .orElseThrow(() -> new NoSuchElementException("Student does not find with id: " + id));
-    }
+    }*/
 
 
 }

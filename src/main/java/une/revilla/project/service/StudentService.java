@@ -9,9 +9,9 @@ public interface StudentService {
 
     Student findStudentById(Long id);
 
-    Student saveStudent(Student student) throws Exception;
+    Student saveStudent(Student student);
 
-    Student updateStudent(Student student, Long id);
+    Student updateStudent(Student student);
 
     void deleteStudentById(Long id);
 

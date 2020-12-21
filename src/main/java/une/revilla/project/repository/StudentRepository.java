@@ -1,11 +1,13 @@
 package une.revilla.project.repository;
 
 import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 import une.revilla.project.entity.Student;
 
-public interface StudentRepository {
+public interface StudentRepository extends JpaRepository<Student, Long> {
 
-    List<Student> findAllStudents();
+    /*List<Student> findAllStudents();
 
     Student findStudentById(Long id);
 
@@ -13,6 +15,6 @@ public interface StudentRepository {
 
     Student updateStudent(Student student, Long id);
 
-    void deleteStudentById(Long id);
+    void deleteStudentById(Long id);*/
     
 }

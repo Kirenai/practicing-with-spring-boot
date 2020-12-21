@@ -16,14 +16,13 @@ import une.revilla.project.entity.Student;
 import une.revilla.project.service.StudentService;
 
 @Controller
-@RequestMapping(value = "/student")
+@RequestMapping("/student")
 public class StudentController {
 
     private final StudentService studentService;
 
     @Autowired
-    public StudentController(@Qualifier(value = "studentService")
-                                     StudentService studentService) {
+    public StudentController(@Qualifier("studentService") StudentService studentService) {
         this.studentService = studentService;
     }
 
@@ -38,28 +37,19 @@ public class StudentController {
     }
 
     @GetMapping("/students/{id}")
-    public String getOneStudent(@RequestParam(name = "id") Long id,
-                                Model model) {
+    public String getOneStudent(@RequestParam Long id, Model model) {
         studentService.findStudentById(id);
         return "redirect:/student/students";
     }
 
     @PostMapping("/add")
     public String addStudent(@ModelAttribute Student student) {
-        if (student.getId() == null) {
-            return "redirect:/student/students";
-        }
-        try {
-            studentService.saveStudent(student);
-        } catch (Exception e) {
-            return "redirect:/student/students";
-        }
+        studentService.saveStudent(student);
         return "redirect:/student/students";
     }
 
     @GetMapping("/update/{id}")
-    public String updateStudent(@PathVariable(value = "id") Long id,
-                                Model model) {
+    public String updateStudent(@PathVariable Long id, Model model) {
         Student student = studentService.findStudentById(id);
         model.addAttribute("myStudent", student);
         model.addAttribute("valid", false);
@@ -68,14 +58,13 @@ public class StudentController {
     }
 
     @PostMapping("/update/process")
-    public String updateProcess(@RequestParam(value = "id") Long id,
-                                @ModelAttribute Student myStudent) {
-        studentService.updateStudent(myStudent, id);
+    public String updateProcess(@ModelAttribute Student myStudent) {
+        studentService.updateStudent(myStudent);
         return "redirect:/student/students";
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteStudent(@PathVariable(value = "id") Long id) {
+    public String deleteStudent(@PathVariable Long id) {
         studentService.deleteStudentById(id);
         return "redirect:/student/students";
     }
