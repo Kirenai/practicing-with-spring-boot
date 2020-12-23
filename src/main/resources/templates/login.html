@@ -9,11 +9,21 @@
   <div class="container mx-auto">
     <div class="row d-flex justify-content-center">
       <div class="col-sm-6">
+        <div th:if="${param.error}" class="p-4 text-center">
+          <div class="alert alert-info mb-0">
+            Invalid username or password
+          </div>
+        </div>
+        <div th:if="${param.registered}" class="p-4 text-center">
+          <div class="alert alert-info mb-0">
+            Registered student
+          </div>
+        </div>
         <h1 class="text-center m-4">Log In</h1>
         <div class="card">
           <div class="card-body">
-            <form action="" method="post" th:action="@{/login-process}" th:object="${loginStudent}">
-              <div card="form-group">
+            <form action="" method="post" th:action="@{/login}" th:object="${loginStudent}" autocomplete="on" >
+              <!--<div card="form-group">
                 <label for="username">Username</label>
                 <input class="form-control" type="text" th:field="*{username}" placeholder="Username"/>
               </div>
@@ -25,9 +35,25 @@
                 <button class="btn btn-primary btn-block" type="submit">
                   Log In
                 </button>
+              </div>-->
+              <div card="form-group">
+                <label for="username">Username</label>
+                <input class="form-control" type="text" id="username" name="username" placeholder="Username"/>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" type="password" id="password" name="password" placeholder="Password"/>
+              </div>
+              <div card="form-group">
+                <button class="btn btn-primary btn-block" type="submit">
+                  Log In
+                </button>
               </div>
             </form>
           </div>
+        </div>
+        <div class="form-group">
+          <span>New Student? <a href="" th:href="@{/registration}">Register here</a> </span>
         </div>
       </div>
     </div>

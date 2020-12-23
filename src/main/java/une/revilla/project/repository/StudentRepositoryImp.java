@@ -1,13 +1,9 @@
 package une.revilla.project.repository;
 
-import java.util.*;
-
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Repository;
 import une.revilla.project.entity.Student;
 
-@Repository
-@Qualifier("studentRepository")
+import java.util.Optional;
+
 public interface StudentRepositoryImp extends StudentRepository {
 
     /*List<Student> students = new ArrayList<>(Arrays.asList(

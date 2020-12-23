@@ -1,6 +1,7 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
+    plataform: mysql
     url: jdbc:mysql://localhost:3306/school_database?serverTimezone=UTC
     username: root
     password:

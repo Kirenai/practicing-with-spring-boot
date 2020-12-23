@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import une.revilla.project.dto.StudentDto;
 import une.revilla.project.entity.Student;
 import une.revilla.project.service.StudentService;
 
@@ -30,9 +32,11 @@ public class StudentController {
     public String students(Model model) {
         List<Student> students = studentService.findAllStudents();
         model.addAttribute("students", students);
-        model.addAttribute("student", new Student());
+        model.addAttribute("student", new StudentDto());
         model.addAttribute("valid", false);
         model.addAttribute("titleText", "Students");
+        model.addAttribute("logout", true);
+        model.addAttribute("linkIndex", "/home");
         return "students";
     }
 
@@ -43,8 +47,8 @@ public class StudentController {
     }
 
     @PostMapping("/add")
-    public String addStudent(@ModelAttribute Student student) {
-        studentService.saveStudent(student);
+    public String addStudent(@ModelAttribute("student") StudentDto student) {
+        studentService.save(student);
         return "redirect:/student/students";
     }
 
@@ -54,12 +58,15 @@ public class StudentController {
         model.addAttribute("myStudent", student);
         model.addAttribute("valid", false);
         model.addAttribute("titleText", "Update Students");
+        model.addAttribute("logout", true);
+        model.addAttribute("linkIndex", "/home");
         return "student-update";
     }
 
     @PostMapping("/update/process")
-    public String updateProcess(@ModelAttribute Student myStudent) {
-        studentService.updateStudent(myStudent);
+    public String updateProcess(@RequestParam Long id,
+                                @ModelAttribute Student myStudent) {
+        studentService.updateStudent(id, myStudent);
         return "redirect:/student/students";
     }
 

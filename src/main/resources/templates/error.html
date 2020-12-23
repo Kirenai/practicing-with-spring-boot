@@ -11,6 +11,13 @@
       <h1 class="text-center mt-4">Error Page</h1>
       <p class="text-center" th:text="${error}"></p>
     </div>
+    <div class="container mx-auto">
+      <div class="card">
+        <div class="card-body text-center">
+          <a class="btn btn-danger" href="" th:href="@{${anchor}}">Go to home</a>
+        </div>
+      </div>
+    </div>
   </div>
   <div th:replace="fragments/scripts.html::scripts"></div>
 </body>

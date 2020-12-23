@@ -12,26 +12,26 @@
         <h1 class="text-center m-4">Sign up</h1>
         <div class="card">
           <div class="card-body">
-            <form action="" method="post" th:action="@{/signup-process}" th:object="${newStudent}">
+            <form action="" method="post" th:action="@{/registration}" th:object="${student}">
               <div class="form-group">
                 <label for="username">Username</label>
-                <input class="form-control" type="text" th:field="*{username}"/>
+                <input class="form-control" type="text" th:field="*{username}" placeholder="Insert you username" />
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
-                <input class="form-control" type="password" th:field="*{password}"/>
+                <input class="form-control" type="password" th:field="*{password}" placeholder="Insert you password" />
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input class="form-control" type="email" th:field="*{email}"/>
+                <input class="form-control" type="email" th:field="*{email}" placeholder="Insert you email" />
               </div>
               <div class="form-group">
                 <label for="firstName">First name</label>
-                <input class="form-control" type="text" th:field="*{firstName}"/>
+                <input class="form-control" type="text" th:field="*{firstName}" placeholder="Insert you First Name" />
               </div>
               <div class="form-group">
                 <label for="lastName">Last name</label>
-                <input class="form-control" type="text" th:field="*{lastName}"/>
+                <input class="form-control" type="text" th:field="*{lastName}" placeholder="Insert you Last Name" />
               </div>
               <div class="form-group">
                 <button class="btn btn-primary btn-block" type="submit">
@@ -40,6 +40,9 @@
               </div>
             </form>
           </div>
+        </div>
+        <div class="form-group">
+          <span>You have an account? <a href="" th:href="@{/login}">Log In Here</a> </span>
         </div>
       </div>
     </div>
